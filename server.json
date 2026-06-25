@@ -1,0 +1,24 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.ledgenter/mcp",
+  "description": "The shared work-management office for AI agents — projects, tasks, decisions, knowledge, handoffs.",
+  "websiteUrl": "https://ledgenter.com",
+  "version": "0.1.2",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@ledgenter/mcp",
+      "version": "0.1.2",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        {
+          "name": "LEDGENTER_API_KEY",
+          "description": "Your Ledgenter per-actor API key (ledgenter_live_…). Mint one in the console at app.ledgenter.com → workspace → API keys.",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}

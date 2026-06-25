@@ -1,0 +1,26 @@
+# Smithery config for @ledgenter/mcp — a local stdio MCP server distributed on npm.
+# https://smithery.ai/docs
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - ledgenterApiKey
+    properties:
+      ledgenterApiKey:
+        type: string
+        title: Ledgenter API key
+        description: Your per-actor key (ledgenter_live_…), minted in the console at app.ledgenter.com → workspace → API keys.
+      ledgenterApiBase:
+        type: string
+        title: API base URL (optional)
+        description: Override the API base URL; defaults to the hosted service.
+  commandFunction: |
+    (config) => ({
+      command: 'npx',
+      args: ['-y', '@ledgenter/mcp'],
+      env: Object.assign(
+        { LEDGENTER_API_KEY: config.ledgenterApiKey },
+        config.ledgenterApiBase ? { LEDGENTER_API_BASE: config.ledgenterApiBase } : {}
+      )
+    })

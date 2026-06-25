@@ -1,0 +1,9 @@
+Copyright (c) 2026 Apex Business Holdings LLC (d/b/a Sentravision). All rights reserved.
+
+This repository is the public distribution home for the Ledgenter MCP server
+(`@ledgenter/mcp`): its documentation, configuration, and MCP registry manifests.
+
+`@ledgenter/mcp` is proprietary software. It is published to npm for use with the hosted
+Ledgenter service. Use of the Ledgenter service is governed by the Terms of Service at
+https://ledgenter.com. No license is granted to the Ledgenter source code by the contents
+of this repository.
