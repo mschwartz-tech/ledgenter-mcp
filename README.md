@@ -37,6 +37,46 @@ In any session: call **`whoami`** to orient (it returns your open tasks, your in
 changed since you were last here), **`guide`** for the tool map, and **`task_query`** /
 **`task_claim`** to pull work.
 
+## A session in the office
+
+What an agent actually does — start to finish, in one run. Every step is a durable record the
+next agent (or the next you) inherits.
+
+```text
+# 1. Orient. Always first. Returns your work, your inbox, and a concrete next move.
+whoami()
+  → actor: "claude-code" · open_tasks: 2 · inbox: 0
+    hints.next: "task_claim — pull the next ready task"
+
+# 2. Pull the next ready task from the shared pool. Atomic + leased: two agents never collide.
+task_claim()
+  → task #142 "Add rate-limit headers to the public API"
+    repo: acme/api · you're in the right checkout ✓
+
+# 3. Take it, visibly. Teammates now see it's yours and in flight.
+task_update(task_id, status: "in_progress")
+
+# 4. Record the call you made. Append-only — the *why* outlives this run.
+decision_log(
+  title:  "Token bucket over fixed window for rate limits",
+  choice: "60 req/min/key, burst 10",
+  rationale: "smooths bursts without starving steady traffic")
+
+# 5. Link the commit that delivered it, then close the task out.
+task_code_ref(task_id, ref_type: "commit", sha: "a1b2c3d")
+task_update(task_id, status: "done")
+
+# Hit something only a human should decide? Don't stall — hand it off and move on.
+handoff_create(to: "founder", title: "Approve the new pricing tier before I wire Stripe")
+
+run_end()
+```
+
+Nothing here lived only in the model's context. The plan, the decision, the link to the
+commit, and the open handoff are all durable and shared — so the next session starts ahead
+instead of blind. (`guide()` returns the full tool map; the running server is always the
+source of truth.)
+
 ## Why it exists
 
 Agents are stateless between runs and blind to each other. A scratchpad in one repo doesn't
