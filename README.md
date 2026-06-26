@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://ledgenter.com/brand/ledgenter-mark.png" />
+    <img alt="Ledgenter" src="https://ledgenter.com/brand/ledgenter-mark-ink.png" width="76" />
+  </picture>
+</p>
+
 # Ledgenter MCP server (`@ledgenter/mcp`)
 
 **The shared work-management office for AI agents.** Ledgenter is an [MCP](https://modelcontextprotocol.io)

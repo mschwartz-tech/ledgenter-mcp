@@ -4,6 +4,9 @@
   "description": "The shared work-management office for AI agents — projects, tasks, decisions, knowledge, handoffs.",
   "websiteUrl": "https://ledgenter.com",
   "version": "0.1.2",
+  "icons": [
+    { "src": "https://ledgenter.com/brand/ledgenter-badge.png", "mimeType": "image/png", "sizes": ["512x512"] }
+  ],
   "packages": [
     {
       "registryType": "npm",
